@@ -30,20 +30,22 @@ app.all('/*', (req, res, next) => {
 });
 
 const server = createServer(app);
+
+// ⚽ socket.io: server-side code --------------------------------------- 
 const io = new Server(server);
 
 io.on('connection', (socket) => {
-    console.log(chalk.bold.green('A user connected!'));
+    console.log(chalk.bold.green('👨 A user connected to our Angular web app!'));
 
     socket.on('message', (message) => {
-        console.log(message);
         io.emit('message', `${socket.id.substring(0, 2)}: ${message}`)
     });
 
     socket.on('disconnect', () => {
-        console.log(chalk.bold.green('A user disconnected!'));
+        console.log(chalk.bold.green('👋 A user disconnected from our Angular web app!'));
     });
 });
+// -------------------------------------------------------------------
 
 server.listen(PORT, () => {
     console.log(chalk.bold.green(`Server is listening on port ${PORT}`));
