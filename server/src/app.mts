@@ -35,14 +35,14 @@ const server = createServer(app);
 const io = new Server(server);
 
 io.on('connection', (socket) => {
-    console.log(chalk.bold.green('👨 A user connected to our Angular web app!'));
+    console.log(chalk.bold.green('👨 A user has connected to WebSocket server!'));
 
     socket.on('message', (message) => {
         io.emit('message', `${socket.id.substring(0, 2)}: ${message}`)
     });
 
     socket.on('disconnect', () => {
-        console.log(chalk.bold.green('👋 A user disconnected from our Angular web app!'));
+        console.log(chalk.bold.green('👋 A user disconnected from WebSocket server!'));
     });
 });
 // -------------------------------------------------------------------
