@@ -4,7 +4,8 @@ import { ChatService } from 'src/app/services/chat.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
+  providers: [ ChatService ]
 })
 export class ChatComponent {
   newMessage = '';
